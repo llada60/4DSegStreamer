@@ -73,7 +73,7 @@
             <!-- <img src="./static/images/icon-2-new.png" alt="logo" style="width: 78px; height: 78px; margin-right: -0px; margin-bottom: -10px;"> -->
           </h1>
           <h2 class="title is-1 publication-title">
-            <span style="color: rgb(50,205,50)">Streaming</span> <span style="color: rgb(100,149,237)">4D Panoptic Segmentation</span>  <br> via Dual Threads Track
+            Streaming 4D Panoptic Segmentation <br> via Dual Threads Track
           </h2>
 
           <!-- <div class="is-size-5 publication-authors">
@@ -87,25 +87,34 @@
 
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://llada60.github.io/">Ling Liu</a><sup>1</sup>,</span>
+              <a href="https://llada60.github.io/">Ling Liu</a><sup>1*</sup>,</span>
             <span class="author-block">
-              <a href="">Jun Tian</a><sup>2</sup>,</span>
+              <a href="">Jun Tian</a><sup>2*</sup>,</span>
             <span class="author-block">
-              <a href="https://ericyi.github.io">Li Yi</a><sup>3,4,5</sup>
+              <a href="https://ericyi.github.io">Li Yi</a><sup>2,3,4&#8224;</sup>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>Institut Polytechnique de Paris,</span>
-            <span class="author-block"><sup>2</sup>,</span>
-            <span class="author-block"><sup>3</sup>Tsinghua University,</span>
-            <span class="author-block"><sup>4</sup>Shanghai Qi Zhi Institute,</span> 
-            <span class="author-block"><sup>5</sup>Shanghai AI Laboratory,</span> 
+            <span class="author-block"><sup>2</sup>IIIS, Tsinghua University,</span>
+            <span class="author-block"><sup>3</sup>Shanghai Qi Zhi Institute,</span> 
+            <span class="author-block"><sup>4</sup>Shanghai AI Lab</span> 
           </div>
 
           <div class="is-size-5 publication-authors">
             <span style="font-weight:bold">ICCV 2025</span>
           </div>
+          <span class="eql-cntrb">
+              <small>
+                  <sup>*</sup>Equal Contribution
+              </small>
+          </span>
+          <span class="eql-cntrb">
+              <small>
+                  <sup>&#8224;</sup>Corresponding Author
+              </small>
+          </span>
 
 
           <div class="column has-text-centered">
@@ -167,45 +176,42 @@
             </div>
           </div>
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3"><span style="color: rgb(0, 0, 0); font-weight:bold">Abstract</span></h2>
-        <div class="content has-text-justified">
-          <p>
-            4D panoptic segmentation in a streaming setting is critical for highly dynamic environments, such as evacuating dense crowds and autonomous driving in complex scenarios, where real-time, fine-grained perception within a constrained time budget is essential. In this paper, we introduce 4DSegStreamer, a novel framework that employs a Dual-Thread System to efficiently process streaming frames. Our method consists of a predictive thread and an inference thread. The predictive thread leverages historical motion and geometric information to extract features and forecast future dynamics. The inference thread ensures timely prediction for incoming frames by aligning with the latest memory and compensating for ego-motion and dynamic object movements. We evaluate 4DSegStreamer on the indoor HOI4D dataset and the outdoor SemanticKITTI and nuScenes datasets. Comprehensive experiments demonstrate the effectiveness of our approach, particularly in accurately predicting dynamic objects in complex scenes.
-          </p>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3"><span style="color: rgb(0, 0, 0); font-weight:bold">Abstract</span></h2>
+          <div class="content has-text-justified">
+            <p>
+              4D panoptic segmentation in a streaming setting is critical for highly dynamic environments, such as evacuating dense crowds and autonomous driving in complex scenarios, where real-time, fine-grained perception within a constrained time budget is essential. In this paper, we introduce 4DSegStreamer, a novel framework that employs a Dual-Thread System to efficiently process streaming frames. Our method consists of a predictive thread and an inference thread. The predictive thread leverages historical motion and geometric information to extract features and forecast future dynamics. The inference thread ensures timely prediction for incoming frames by aligning with the latest memory and compensating for ego-motion and dynamic object movements. We evaluate 4DSegStreamer on the indoor HOI4D dataset and the outdoor SemanticKITTI and nuScenes datasets. Comprehensive experiments demonstrate the effectiveness of our approach, particularly in accurately predicting dynamic objects in complex scenes.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paper video. -->
+      <!-- <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3"><span style="color: rgb(0, 0, 0); font-weight:bold">Video</span></h2>
+          <div class="publication-video">
+            <iframe src="https://www.youtube.com/embed/zru1Z-DaiWE"
+                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div> -->
+          
+
         </div>
       </div>
     </div>
-
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3"><span style="color: rgb(0, 0, 0); font-weight:bold">Video</span></h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/zru1Z-DaiWE"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-          <!-- <video class="lazy" controls muted height="100%">
-                    <source data-src="static/videos-lowres/video_7.mp4"
-                    type="video/mp4"> </source>
-          </video> -->
-        </div>
-        
-
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
 
 
 </body>
