@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Streaming 4D Panoptic Segmentation via Dual Threads">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:type" content="video.other" />
+  <title> Towards Generalizable Neural Tracking Control for Dexterous Manipulation from Human References</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="stylesheet" href="./static/css/styles.css"> -->
+  <link rel="icon" href="./static/images/icon_2.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="assets/js/video_comparison.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.js?features=IntersectionObserver"></script>
+  <!-- <script src="./static/js/yall.js"></script> -->
+  <script>
+      yall(
+          {
+              observeChanges: true
+          }
+      );
+  </script>
+  <!-- <script src="./static/js/scripts.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+  <script src="https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/js/webflow.fd002feec.js"></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer@2.0.1/dist/model-viewer.min.js"></script>
+  <style>
+    .horizontal_line {
+        width: 90%;
+        height: 5px;
+        border-top: 5px dotted black;
+        line-height: 80%;
+    }
+
+    .line {
+        border-bottom: 1px solid rgb(172, 170, 170);
+        margin-top: 1px;
+        margin-left: 130px;
+        width: 80%;
+    }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            <!-- <img src="./static/images/icon-3.png" alt="logo" style="width: 78px; height: 78px; margin-right: -0px; margin-bottom: -10px;"> -->
+            <!-- <img src="./static/images/icon-2-new.png" alt="logo" style="width: 78px; height: 78px; margin-right: -0px; margin-bottom: -10px;"> -->
+            <img src="./static/images/icon_2.png" alt="logo" style="width: 60px; height: 78px; margin-right: -3px; margin-bottom: -10px;">
+            <span style="color: rgb(100,149,237); font-weight:bold">4DSeg</span><span style="color: rgb(50,205,50); font-weight:bold">Streamer</span>
+            <!-- <img src="./static/images/icon-2-new.png" alt="logo" style="width: 78px; height: 78px; margin-right: -0px; margin-bottom: -10px;"> -->
+          </h1>
+          <h2 class="title is-1 publication-title">
+            <span style="color: rgb(50,205,50)">Streaming</span> <span style="color: rgb(100,149,237)">4D Panoptic Segmentation</span>  <br> via Dual Threads Track
+          </h2>
+
+          <!-- <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Anonymous Author(s)
+            </span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span style="font-weight:bold">Paper under double-blind review</span>
+          </div> -->
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://llada60.github.io/">Ling Liu</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Jun Tian</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://ericyi.github.io">Li Yi</a><sup>3,4,5</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Institut Polytechnique de Paris,</span>
+            <span class="author-block"><sup>2</sup>,</span>
+            <span class="author-block"><sup>3</sup>Tsinghua University,</span>
+            <span class="author-block"><sup>4</sup>Shanghai Qi Zhi Institute,</span> 
+            <span class="author-block"><sup>5</sup>Shanghai AI Laboratory,</span> 
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span style="font-weight:bold">ICCV 2025</span>
+          </div>
+
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/llada60/4DSegStreamer"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-slideshare"></i>
+                  </span>
+                  <span>Slides</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fa fa-database" aria-hidden="true"></i>
+                  </span>
+                  <span>Supp</span>
+                </a>
+              </span>
+            </div>
+          </div>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"><span style="color: rgb(0, 0, 0); font-weight:bold">Abstract</span></h2>
+        <div class="content has-text-justified">
+          <p>
+            4D panoptic segmentation in a streaming setting is critical for highly dynamic environments, such as evacuating dense crowds and autonomous driving in complex scenarios, where real-time, fine-grained perception within a constrained time budget is essential. In this paper, we introduce 4DSegStreamer, a novel framework that employs a Dual-Thread System to efficiently process streaming frames. Our method consists of a predictive thread and an inference thread. The predictive thread leverages historical motion and geometric information to extract features and forecast future dynamics. The inference thread ensures timely prediction for incoming frames by aligning with the latest memory and compensating for ego-motion and dynamic object movements. We evaluate 4DSegStreamer on the indoor HOI4D dataset and the outdoor SemanticKITTI and nuScenes datasets. Comprehensive experiments demonstrate the effectiveness of our approach, particularly in accurately predicting dynamic objects in complex scenes.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"><span style="color: rgb(0, 0, 0); font-weight:bold">Video</span></h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/zru1Z-DaiWE"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+          <!-- <video class="lazy" controls muted height="100%">
+                    <source data-src="static/videos-lowres/video_7.mp4"
+                    type="video/mp4"> </source>
+          </video> -->
+        </div>
+        
+
+      </div>
+    </div>
+  </div>
+</section>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</body>
+</html>
