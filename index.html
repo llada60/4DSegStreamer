@@ -310,8 +310,23 @@
     <div class="container is-max-widescreen">
       <!-- Outdoor dataset. -->
       <h3 class="title is-4">Outdoor Datasets: SemanticKITTI and nuScenes</h3>
-      
+
+      <div class="columns">
+        <div class="column">
+          <p>
+            Depending on whether the camera pose is available, we define two settings:
+          </p>
+          <ul style="list-style: disc; padding-left: 20px;">
+            <li><em><b>Known pose setting</b></em>: we directly use the relative pose to align future frames with the feature memory coordinates.</li>
+            <li><em><b>Unknown pose setting</b></em>: we utilize the pose estimated by <a href="https://arxiv.org/abs/2105.11320" target="_blank" rel="noopener noreferrer">Suma++</a> between key frames to update the ego-motion memory, and then use the ego-pose forecaster to propagate the future ego-pose motion, ensuring proper alignment and eliminating ego motion.</li>
+          </ul>
+        </div>
+      </div>
+
+
       <img src="./static/images/sk_p.png" alt="logo" style="width: 900px; display: block; margin: 0 auto;" >
+
+      <!-- add a video here -->
 
       <img src="./static/images/nuscenes1.png" alt="logo" style="width: 1000px; display: block; margin: 0 auto;" >
     </div>
