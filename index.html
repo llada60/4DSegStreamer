@@ -7,7 +7,7 @@
   <meta name="keywords" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:type" content="video.other" />
-  <title> Towards Generalizable Neural Tracking Control for Dexterous Manipulation from Human References</title>
+  <title> Streaming 4D Panoptic Segmentation via Dual Threads Track</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -69,7 +69,7 @@
             <!-- <img src="./static/images/icon-3.png" alt="logo" style="width: 78px; height: 78px; margin-right: -0px; margin-bottom: -10px;"> -->
             <!-- <img src="./static/images/icon-2-new.png" alt="logo" style="width: 78px; height: 78px; margin-right: -0px; margin-bottom: -10px;"> -->
             <img src="./static/images/icon_2.png" alt="logo" style="width: 60px; height: 78px; margin-right: -3px; margin-bottom: -10px;">
-            <span style="color: rgb(100,149,237); font-weight:bold">4DSeg</span><span style="color: rgb(50,205,50); font-weight:bold">Streamer</span>
+            <span style="color: rgb(100,149,237); font-weight:bold">4DSeg</span><span style="color: rgb(144,238,144); font-weight:bold">Streamer</span>
             <!-- <img src="./static/images/icon-2-new.png" alt="logo" style="width: 78px; height: 78px; margin-right: -0px; margin-bottom: -10px;"> -->
           </h1>
           <h2 class="title is-1 publication-title">
@@ -155,7 +155,7 @@
                   <span>Video</span>
                 </a>
               </span>
-              <span class="link-block">
+              <!-- <span class="link-block">
                 <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -163,8 +163,8 @@
                   </span>
                   <span>Slides</span>
                 </a>
-              </span>
-              <span class="link-block">
+              </span> -->
+              <!-- <span class="link-block">
                 <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -172,11 +172,37 @@
                   </span>
                   <span>Supp</span>
                 </a>
-              </span>
+              </span> -->
             </div>
           </div>
 
-  <section class="section">
+  
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" class="lazy" poster="./static/images/teaser.png"  autoplay muted loop height="100%">
+        <source src="static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <!-- <img src="./static/images/mainpicture.png" alt="logo""> -->
+      <h2 class="subtitle has-text-centered">
+        <span style="color: rgb(100,149,237); font-weight:bold">4DSeg</span><span style="color: rgb(144,238,144); font-weight:bold">Streamer</span> is a real-time dual-thread framework for fine-grained <span style="color: rgb(100,149,237); font-weight:bold">4D panoptic segmentation</span> in highly dynamic environments. Designed for <span style="color: rgb(144,238,144); font-weight:bold"">online streaming inputs considering computational latency</span>, it achieves a balanced trade-off between accuracy and efficiency.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section">
     <div class="container is-max-desktop">
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
@@ -184,7 +210,7 @@
           <h2 class="title is-3"><span style="color: rgb(0, 0, 0); font-weight:bold">Abstract</span></h2>
           <div class="content has-text-justified">
             <p>
-              4D panoptic segmentation in a streaming setting is critical for highly dynamic environments, such as evacuating dense crowds and autonomous driving in complex scenarios, where real-time, fine-grained perception within a constrained time budget is essential. In this paper, we introduce 4DSegStreamer, a novel framework that employs a Dual-Thread System to efficiently process streaming frames. Our method consists of a predictive thread and an inference thread. The predictive thread leverages historical motion and geometric information to extract features and forecast future dynamics. The inference thread ensures timely prediction for incoming frames by aligning with the latest memory and compensating for ego-motion and dynamic object movements. We evaluate 4DSegStreamer on the indoor HOI4D dataset and the outdoor SemanticKITTI and nuScenes datasets. Comprehensive experiments demonstrate the effectiveness of our approach, particularly in accurately predicting dynamic objects in complex scenes.
+              4D panoptic segmentation in a streaming setting is critical for highly dynamic environments, such as evacuating dense crowds and autonomous driving in complex scenarios, where real-time, fine-grained perception within a constrained time budget is essential. In this paper, we introduce 4DSegStreamer, a novel framework that employs a Dual-Thread System to efficiently process streaming frames.  The framework is general and can be seamlessly integrated into existing 3D and 4D segmentation methods to enable real-time capability. It also demonstrates superior robustness compared to existing streaming perception approaches, particularly under high FPS conditions. The system consists of a predictive thread and an inference thread. The predictive thread leverages historical motion and geometric information to extract features and forecast future dynamics. The inference thread ensures timely prediction for incoming frames by aligning with the latest memory and compensating for ego-motion and dynamic object movements. We evaluate 4DSegStreamer on the indoor HOI4D dataset and the outdoor SemanticKITTI and nuScenes datasets. Comprehensive experiments demonstrate the effectiveness of our approach, particularly in accurately predicting dynamic objects in complex scenes.
             </p>
           </div>
         </div>
@@ -203,16 +229,112 @@
         </div>
       </div>
     </div>
-  </section>
+</section>
 
+<!-- Methods -->
+<section class="section">
+    <div class="container is-max-widescreen">
+      <!-- Pipeline. -->
+      <h2 class="title is-3">Dual-thread System</h2>
+      <video id="teaser" class="lazy" poster="./static/images/mainpicture.png"  autoplay muted loop height="100%">
+        <source src="static/videos/main.mp4"
+                type="video/mp4">
+      </video>
+      
+      <div class="columns">
+        <div class="column">
+          <p>
+            The dual-thread system consists of a predictive thread and an inference thread, enabling real-time query for unseen future frames. The <span style="color: rgb(125, 166, 224);font-weight:bold">predictive thread</span> updates the geometric and motion memories with the latest extracted feature and leverages the historical information to forecast future dynamics. The <span style="color: rgb(255, 153, 153);font-weight:bold">inference thread</span> retrieves per-point predictions by geometrically aligning them with the current memory using ego-pose and dynamic object alignment.
+          </p>
+        </div>
+      </div>
+      <!-- Motion Alignment. -->
+      <h2 class="title is-3">Inference Thread: Motion Alignment</h2>
+      <video id="teaser" class="lazy" poster="./static/images/alignment_new7.png"  autoplay muted loop height="100%">
+        <source src="static/videos/motion_align.mp4"
+                type="video/mp4">
+      </video>
+      
+      <div class="columns">
+        <div class="column">
+          <p>
+            In the inference thread, we perform ego-pose alignment and dynamic object alignment to align the current querying frame with the latest memory, which has been updated by previously processed frames. The <span style="color: rgb(144,238,144);font-weight:bold">green points</span> represent the previously processed frame that has been used to update the memory and the <span style="color: rgb(100,149,237);font-weight:bold">blue points</span> are the current querying frame. The <span style="color: rgb(255,212,97);font-weight:bold">yellow box</span> highlights static objects that can be aligned through ego-pose alignment. The <span style="color: rgb(186,79,26);font-weight:bold">red box</span> indicates dynamic objects, which require dynamic object alignment to achieve proper alignment.
+          </p>
         </div>
       </div>
     </div>
-  </div>
+</section>
+
+<!-- Experiments -->
+
+<section class="section">
+    <div class="container is-max-widescreen">
+      <h2 class="title is-3">Results</h2>      
+      <!-- Roubust. -->
+      <h3 class="title is-4">Different FPS Settings</h3>
+
+      <img src="./static/images/Figure_3.png" style="height: 300px; display: block; margin: 0 auto;" >
+      
+      <div class="columns">
+        <div class="column">
+          <p>
+            Comparison of streaming performance at different FPS settings on the SemanticKITTI dataset.  Our 4DSegStreamer demonstrates significant performance gains and exhibits a slower performance decline as the FPS increases, indicating its robustness as a more advanced 4D streaming system for panoptic segmentation tasks, particularly in high-FPS scenarios.
+          </p>
+        </div>
+      </div>
+      <!-- General. -->
+      <h3 class="title is-4">General Evaluation</h3>
+      
+      <img src="./static/images/general.png" alt="logo" style="width: 500px; display: block; margin: 0 auto;" >
+      
+      <div class="columns">
+        <div class="column">
+          <p>
+            Our method is designed as a plug-and-play module to enhance 3D and 4D segmentation backbones, enabling real-time performance in streaming scenarios. Existing 3D and 4D segmentation methods can be easily integrated with our dual-thread system to achieve real-time capabilities. The results demonstrate that our method significantly improves the performance of these backbones in the streaming setting.
+          </p>
+        </div>
+      </div>
+      <!-- Outdoor dataset. -->
+      <h3 class="title is-4">Outdoor Datasets: SemanticKITTI and nuScenes</h3>
+      
+      <img src="./static/images/sk_p.png" alt="logo" style="width: 900px; display: block; margin: 0 auto;" >
+
+      <img src="./static/images/nuscenes1.png" alt="logo" style="width: 1000px; display: block; margin: 0 auto;" >
+
+      <!-- Indoor dataset. -->
+       <h3 class="title is-4">Indoor Dataset: HOI4D</h3>
+       <img src="./static/images/hoi4d.png" alt="logo" style="width: 650px; display: block; margin: 0 auto;" >
+
+       <!-- Ablation study. -->
+       <h3 class="title is-4">Ablation Study: effects of components</h3>
+       <img src="./static/images/ablation.png" alt="logo" style="width: 900px; display: block; margin: 0 auto;" >
+
 </section>
 
 
 
-
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <!-- <a class="icon-link"
+         href="./static/pdfs/paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link"
+         href="./static/videos/video-2.mp4">
+        <i class="fab fa-youtube"></i>
+      </a> -->
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            The template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. We thank authors for their codebase.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
